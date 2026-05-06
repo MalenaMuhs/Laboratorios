@@ -14,13 +14,14 @@ public class Main {
         Auto[] autos = new Auto[CANT_AUTOS];
 
         for (int i = 0; i < CANT_AUTOS; i++) {
-            System.out.println("\nAuto nro." + (i+1));
+            int  aux_kmrecorridos= 0;
+            System.out.println("\nAuto nro." + (i + 1));
             autos[i] = new Auto();
-            int aux_kmrecorridos= autos[i].getMotor().getKilometrosRecorridos();
-               for (int j = 0; j < 3; j++) {
-               aux_kmrecorridos +=opciones[(int)(Math.random() * 3)];
+
+            for (int j = 0; j < 3; j++) {
+                aux_kmrecorridos += opciones[(int) (Math.random() * 3)];
             }
-            incremento_km = 0;
+            
             //autos[i].pedirDatosAuto();
             autos[i].avanzanKm(aux_kmrecorridos);
         }
