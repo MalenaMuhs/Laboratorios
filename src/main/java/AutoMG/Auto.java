@@ -1,13 +1,90 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package AutoMG;
 
-/**
- *
- * @author noteb
- */
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+
 public class Auto {
+  private String marca;
+  private String modelo;
+  private String color;
+  private double precio;
+  private Motor motor;
+  
+  public Auto(){  
+  }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public Motor getMotor() {
+        return motor;
+    }
+
+    public void setMotor(Motor motor) {
+        this.motor = motor;
+    }
+  
+  
+  public void avanzanKm (int km){
+      
+     int aux= motor.getKilometrosRecorridos();
+     motor.setKilometrosRecorridos(aux+km);
+      
+      
+      if (motor.requiereCambioAceite()== true) {
+          
+          JOptionPane.showMessageDialog(null, "Necesita cambio de aceite");
+      }
+      
+  }
+  
+public void pedirDatosAuto() {
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Ingrese marca: ");
+    this.marca = sc.nextLine();
+
+    System.out.print("Ingrese modelo: ");
+    this.modelo = sc.nextLine();
+
+    System.out.print("Ingrese color: ");
+    this.color = sc.nextLine();
+
+    System.out.print("Ingrese precio: ");
+    this.precio = sc.nextDouble();
+
     
+    motor = new Motor();
+    motor.pedirDatosMotor(); 
+}
 }
