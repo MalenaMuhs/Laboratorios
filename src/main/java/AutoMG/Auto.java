@@ -10,8 +10,9 @@ public class Auto {
   private String color;
   private double precio;
   private Motor motor;
-  
+
   public Auto(){  
+      pedirDatosAuto();
   }
 
     public String getMarca() {
@@ -56,19 +57,20 @@ public class Auto {
   
   
   public void avanzanKm (int km){
-      
+      //incrementar mas de una vez
      int aux= motor.getKilometrosRecorridos();
      motor.setKilometrosRecorridos(aux+km);
       
       
-      if (motor.requiereCambioAceite()== true) {
+      if (motor.requiereCambioAceite()) {
           
-          JOptionPane.showMessageDialog(null, "Necesita cambio de aceite");
+          System.out.println("Necesita cambio de aceite");
+          //JOptionPane.showMessageDialog(null, "Necesita cambio de aceite");
       }
       
   }
   
-public void pedirDatosAuto() {
+private void pedirDatosAuto() {
     Scanner sc = new Scanner(System.in);
 
     System.out.print("Ingrese marca: ");
