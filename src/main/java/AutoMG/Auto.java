@@ -3,17 +3,17 @@ package AutoMG;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
-
 public class Auto {
-  private String marca;
-  private String modelo;
-  private String color;
-  private double precio;
-  private Motor motor;
 
-  public Auto(){  
-      pedirDatosAuto();
-  }
+    private String marca;
+    private String modelo;
+    private String color;
+    private double precio;
+    private Motor motor;
+
+    public Auto() {
+        pedirDatosAuto();
+    }
 
     public String getMarca() {
         return marca;
@@ -54,39 +54,48 @@ public class Auto {
     public void setMotor(Motor motor) {
         this.motor = motor;
     }
-  
-  
-  public void avanzanKm (int km){
-      //incrementar mas de una vez
-     int aux= motor.getKilometrosRecorridos();
-     motor.setKilometrosRecorridos(aux+km);
-      
-      
-      if (motor.requiereCambioAceite()) {
-          
-          System.out.println("Necesita cambio de aceite");
-          //JOptionPane.showMessageDialog(null, "Necesita cambio de aceite");
-      }
-      
-  }
-  
-private void pedirDatosAuto() {
-    Scanner sc = new Scanner(System.in);
 
-    System.out.print("Ingrese marca: ");
-    this.marca = sc.nextLine();
+    public void avanzanKm(int km) {
+        //incrementar mas de una vez
+        int aux = motor.getKilometrosRecorridos();
+        motor.setKilometrosRecorridos(aux + km);
 
-    System.out.print("Ingrese modelo: ");
-    this.modelo = sc.nextLine();
+        if (motor.requiereCambioAceite()) {
 
-    System.out.print("Ingrese color: ");
-    this.color = sc.nextLine();
+             JOptionPane.showMessageDialog(null, "El auto " + marca + " necesita cambio de aceite");
+        }
 
-    System.out.print("Ingrese precio: ");
-    this.precio = sc.nextDouble();
+    }
 
+    private void pedirDatosAuto() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingrese marca: ");
+        this.marca = sc.nextLine();
+
+        System.out.print("Ingrese modelo: ");
+        this.modelo = sc.nextLine();
+
+        System.out.print("Ingrese color: ");
+        this.color = sc.nextLine();
+
+        System.out.print("Ingrese precio: ");
+        this.precio = sc.nextDouble();
+
+        motor = new Motor();
+        motor.pedirDatosMotor();
+    }
+
+    @Override
+    public String toString() {
+        return  "\nMarca: " + marca
+                + "\nModelo: " + modelo
+                + "\nColor: " + color
+                + "\nPrecio: $" + precio
+                + "\nKilometros: " + motor.getKilometrosRecorridos()
+                + "\nCilindrada: " + motor.getCilindradas()
+                + "\nCaballos: " + motor.getCaballosFuerza();
+    }
     
-    motor = new Motor();
-    motor.pedirDatosMotor(); 
-}
+    
 }
