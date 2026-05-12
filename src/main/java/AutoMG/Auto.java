@@ -3,18 +3,68 @@ package AutoMG;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
-public class Auto {
+public abstract class Auto {
 
-    private String marca;
-    private String modelo;
-    private String color;
-    private double precio;
-    private Motor motor;
+    protected String marca;
+    protected String modelo;
+    protected String color;
+    protected double precio;
+    protected Motor motor;
 
     public Auto() {
-        pedirDatosAuto();
     }
 
+    public Auto(String marca, String modelo, String color, double precio, Motor motor) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.color = color;
+        this.precio = precio;
+        this.motor = motor;
+    }
+
+    public void avanzarKm(int km) {
+        //incrementar mas de una vez
+        int aux = motor.getKilometrosRecorridos();
+        motor.setKilometrosRecorridos(aux + km);
+
+        if (motor.requiereCambioAceite()) {
+
+             JOptionPane.showMessageDialog(null, "El motor del Auto " + marca + " necesita cambio de aceite");
+        }
+
+    }
+
+    protected void pedirDatosAuto() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingrese marca: ");
+        this.marca = sc.nextLine();
+
+        System.out.print("Ingrese modelo: ");
+        this.modelo = sc.nextLine();
+
+        System.out.print("Ingrese color: ");
+        this.color = sc.nextLine();
+
+        System.out.print("Ingrese precio: ");
+        this.precio = sc.nextDouble();
+
+        motor = new Motor();
+        motor.pedirDatosMotor();
+    }
+
+    @Override
+    public String toString() {
+        return  "\nMarca: " + marca
+                + "\nModelo: " + modelo
+                + "\nColor: " + color
+                + "\nPrecio: $" + precio
+                + "\nKilometros: " + motor.getKilometrosRecorridos()
+                + "\nCilindrada: " + motor.getCilindradas()
+                + "\nCaballos: " + motor.getCaballosFuerza();
+    }
+    
+    //Getters and Setters
     public String getMarca() {
         return marca;
     }
@@ -54,48 +104,5 @@ public class Auto {
     public void setMotor(Motor motor) {
         this.motor = motor;
     }
-
-    public void avanzanKm(int km) {
-        //incrementar mas de una vez
-        int aux = motor.getKilometrosRecorridos();
-        motor.setKilometrosRecorridos(aux + km);
-
-        if (motor.requiereCambioAceite()) {
-
-             JOptionPane.showMessageDialog(null, "El auto " + marca + " necesita cambio de aceite");
-        }
-
-    }
-
-    private void pedirDatosAuto() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Ingrese marca: ");
-        this.marca = sc.nextLine();
-
-        System.out.print("Ingrese modelo: ");
-        this.modelo = sc.nextLine();
-
-        System.out.print("Ingrese color: ");
-        this.color = sc.nextLine();
-
-        System.out.print("Ingrese precio: ");
-        this.precio = sc.nextDouble();
-
-        motor = new Motor();
-        motor.pedirDatosMotor();
-    }
-
-    @Override
-    public String toString() {
-        return  "\nMarca: " + marca
-                + "\nModelo: " + modelo
-                + "\nColor: " + color
-                + "\nPrecio: $" + precio
-                + "\nKilometros: " + motor.getKilometrosRecorridos()
-                + "\nCilindrada: " + motor.getCilindradas()
-                + "\nCaballos: " + motor.getCaballosFuerza();
-    }
-    
     
 }
