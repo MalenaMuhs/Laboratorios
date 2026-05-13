@@ -46,11 +46,11 @@ public class Administrativo extends Empleado {
         int opcion = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Ingrese marca: ");
+        /*System.out.print("Ingrese marca: ");
         String marca = sc.nextLine();
 
         System.out.print("Ingrese modelo: ");
-        String modelo = sc.nextLine();
+        String modelo = sc.nextLine();*/
 
         switch (opcion) {
 
