@@ -31,61 +31,72 @@ public class Main {
         }
 
 // CARGAR AUTOS
-        seguir = "s";
+        if (administrativos.isEmpty()) {
+            System.out.println("No hay administrativos cargados. No se pueden cargar autos.");
+        } else {
 
-        while (seguir.equalsIgnoreCase("s")) {
-            int posAdmin = -1;
+            seguir = "s";
 
-            while (posAdmin == -1) {
+            while (seguir.equalsIgnoreCase("s")) {
 
-                System.out.print("Ingrese código de administrativo: ");
-                String codigo = sc.nextLine();
+                int posAdmin = -1;
 
-                for (int i = 0; i < administrativos.size(); i++) {
-                    if (administrativos.get(i).getCodigoEmpleado().equalsIgnoreCase(codigo)) {
-                        posAdmin = i;
+                while (posAdmin == -1) {
+
+                    System.out.print("Ingrese codigo de administrativo: ");
+                    String codigo = sc.nextLine();
+
+                    for (int i = 0; i < administrativos.size(); i++) {
+                        if (administrativos.get(i).getCodigoEmpleado().equalsIgnoreCase(codigo)) {
+                            posAdmin = i;
+                        }
+                    }
+
+                    if (posAdmin == -1) {
+                        System.out.println("Codigo invalido. Intente nuevamente.");
                     }
                 }
 
-                if (posAdmin == -1) {
-                    System.out.println("Código inválido. Intente nuevamente.");
-                }
+                administrativos.get(posAdmin).cargarAuto(autosStock);
+
+                System.out.print("Desea agregar otro auto? s/n: ");
+                seguir = sc.nextLine();
             }
-
-            administrativos.get(posAdmin).cargarAuto(autosStock);
-
-            System.out.print("Desea agregar otro auto? s/n: ");
-            seguir = sc.nextLine();
         }
 
 // VENDER AUTOS
-        seguir = "s";
+        if (vendedores.isEmpty()) {
+            System.out.println("No hay vendedores cargados. No se pueden vender autos.");
+        } else {
 
-        while (seguir.equalsIgnoreCase("s")) {
+            seguir = "s";
 
-            int posVendedor = -1;
+            while (seguir.equalsIgnoreCase("s")) {
 
-            while (posVendedor == -1) {
+                int posVendedor = -1;
 
-                System.out.print("Ingrese código de vendedor: ");
-                String codigo = sc.nextLine();
+                while (posVendedor == -1) {
 
-                for (int i = 0; i < vendedores.size(); i++) {
-                    if (vendedores.get(i).getCodigoEmpleado().equalsIgnoreCase(codigo)) {
-                        posVendedor = i;
-                        break;
+                    System.out.print("Ingrese codigo de vendedor: ");
+                    String codigo = sc.nextLine();
+
+                    for (int i = 0; i < vendedores.size(); i++) {
+                        if (vendedores.get(i).getCodigoEmpleado().equalsIgnoreCase(codigo)) {
+                            posVendedor = i;
+                            break;
+                        }
+                    }
+
+                    if (posVendedor == -1) {
+                        System.out.println("Codigo invalido. Intente nuevamente.");
                     }
                 }
 
-                if (posVendedor == -1) {
-                    System.out.println("Código inválido. Intente nuevamente.");
-                }
+                vendedores.get(posVendedor).venderAuto(autosStock, autosVendidos);
+
+                System.out.print("Desea vender otro auto? s/n: ");
+                seguir = sc.nextLine();
             }
-
-            vendedores.get(posVendedor).venderAuto(autosStock, autosVendidos);
-
-            System.out.print("Desea vender otro auto? s/n: ");
-            seguir = sc.nextLine();
         }
 
         int[] kms = {10000, 20000, 50000};
@@ -117,11 +128,11 @@ public class Main {
         for (int k = 0; k < autosStock.size(); k++) {
             System.out.println(autosStock.get(k));
         }
-         System.out.println("=== AUTOS VENDIDOS ===");
+        System.out.println("=== AUTOS VENDIDOS ===");
         for (int m = 0; m < autosVendidos.size(); m++) {
             System.out.println(autosStock.get(m));
         }
-         System.out.println("=== ADMINISTRATIVOS ===");
+        System.out.println("=== ADMINISTRATIVOS ===");
         for (int n = 0; n < administrativos.size(); n++) {
             administrativos.get(n).mostrarInformacion();
         }
