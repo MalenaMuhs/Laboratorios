@@ -14,6 +14,10 @@ public class AutoFamiliar extends Auto{
 
     public AutoFamiliar() {
     }
+
+    public AutoFamiliar(String marca, String modelo) {
+        super(marca, modelo);
+    }
     
     
     public AutoFamiliar(int cantidadPuertas, int cantidadAsientos, String marca, String modelo, String color, double precio, Motor motor) {

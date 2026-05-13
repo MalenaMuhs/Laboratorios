@@ -10,6 +10,11 @@ public class AutoUtilitario extends Auto{
 
     public AutoUtilitario() {
     }
+
+    public AutoUtilitario(String marca, String modelo) {
+        super(marca, modelo);
+    }
+    
     
     public AutoUtilitario(double capacidadCarga, double volumenCarga, String marca, String modelo, String color, double precio, Motor motor) {
         super(marca, modelo, color, precio, motor);

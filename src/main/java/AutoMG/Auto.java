@@ -14,6 +14,12 @@ public abstract class Auto {
     public Auto() {
     }
 
+    public Auto(String marca, String modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+    }
+
+    
     public Auto(String marca, String modelo, String color, double precio, Motor motor) {
         this.marca = marca;
         this.modelo = modelo;

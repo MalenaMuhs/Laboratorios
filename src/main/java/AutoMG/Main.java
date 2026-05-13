@@ -6,58 +6,131 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        final int CANT_AUTOS = 3;
-        final int CANT_AUTO_FAMILIAR = 1;
-        final int CANT_AUTO_UTILITARIO = 1;
-        final int CANT_AUTO_DEPORTIVO = 1;
-        int j=0;
+        // LISTAS DE AUTOS
+        ArrayList<Auto> autosStock = new ArrayList<>();
+        ArrayList<Auto> autosVendidos = new ArrayList<>();
+
+// LISTAS DE EMPLEADOS
+        ArrayList<Administrativo> administrativos = new ArrayList<>();
+        ArrayList<Vendedor> vendedores = new ArrayList<>();
+
         Scanner sc = new Scanner(System.in);
-        
-        int[] opciones = {25000, 30000, 50000};
-        ArrayList<Auto> autos = new ArrayList<>();
 
-        // AUTOS FAMILIARES
-        for (int i = 0; i < CANT_AUTO_FAMILIAR; i++) {
-            System.out.println("Auto nro. " + (j + 1));
-            
+// GERENTE
+        Gerente gerente = new Gerente(150000.0, "Carlos", "Gomez", "123", "gerente@gmail.com", "G1", 500000);
 
-            Auto auto = new AutoFamiliar();
-            auto.pedirDatosAuto();
-            int km = opciones[(int)(Math.random() * 3)];
-            auto.avanzarKm(km);
-            autos.add(auto);
+// AGREGAR EMPLEADOS
+        String seguir = "s";
+
+        while (seguir.equalsIgnoreCase("s")) {
+
+            gerente.agregarEmpleado(administrativos, vendedores);
+
+            System.out.print("Desea agregar otro empleado? s/n: ");
+            seguir = sc.nextLine();
+        }
+
+// CARGAR AUTOS
+        seguir = "s";
+
+        while (seguir.equalsIgnoreCase("s")) {
+            int posAdmin = -1;
+
+            while (posAdmin == -1) {
+
+                System.out.print("Ingrese código de administrativo: ");
+                String codigo = sc.nextLine();
+
+                for (int i = 0; i < administrativos.size(); i++) {
+                    if (administrativos.get(i).getCodigoEmpleado().equalsIgnoreCase(codigo)) {
+                        posAdmin = i;
+                    }
+                }
+
+                if (posAdmin == -1) {
+                    System.out.println("Código inválido. Intente nuevamente.");
+                }
+            }
+
+            administrativos.get(posAdmin).cargarAuto(autosStock);
+
+            System.out.print("Desea agregar otro auto? s/n: ");
+            seguir = sc.nextLine();
+        }
+
+// VENDER AUTOS
+        seguir = "s";
+
+        while (seguir.equalsIgnoreCase("s")) {
+
+            int posVendedor = -1;
+
+            while (posVendedor == -1) {
+
+                System.out.print("Ingrese código de vendedor: ");
+                String codigo = sc.nextLine();
+
+                for (int i = 0; i < vendedores.size(); i++) {
+                    if (vendedores.get(i).getCodigoEmpleado().equalsIgnoreCase(codigo)) {
+                        posVendedor = i;
+                        break;
+                    }
+                }
+
+                if (posVendedor == -1) {
+                    System.out.println("Código inválido. Intente nuevamente.");
+                }
+            }
+
+            vendedores.get(posVendedor).venderAuto(autosStock, autosVendidos);
+
+            System.out.print("Desea vender otro auto? s/n: ");
+            seguir = sc.nextLine();
+        }
+
+        int[] kms = {10000, 20000, 50000};
+
+// AVANZAR AUTOS EN STOCK
+        int i = 0;
+
+        while (i < autosStock.size()) {
+
+            int kmRandom = kms[(int) (Math.random() * 3)];
+
+            autosStock.get(i).avanzarKm(kmRandom);
+
+            i++;
+        }
+
+// AVANZAR AUTOS VENDIDOS
+        int j = 0;
+
+        while (j < autosVendidos.size()) {
+
+            int kmRandom = kms[(int) (Math.random() * 3)];
+
+            autosVendidos.get(j).avanzarKm(kmRandom);
+
             j++;
         }
-        // AUTOS UTILITARIOS
-        for (int i = 0; i < CANT_AUTO_UTILITARIO; i++) {
-            System.out.println("Auto nro. " + (j + 1));
-
-            Auto auto = new AutoUtilitario();
-            auto.pedirDatosAuto();
-            int km = opciones[(int)(Math.random() * 3)];
-            auto.avanzarKm(km);
-            autos.add(auto);
-            j++;
+        System.out.println("=== AUTOS EN STOCK ===");
+        for (int k = 0; k < autosStock.size(); k++) {
+            System.out.println(autosStock.get(k));
         }
-
-        // AUTOS DEPORTIVOS
-        for (int i = 0; i < CANT_AUTO_DEPORTIVO; i++) {
-            System.out.println("Auto nro. " + (j + 1));
-
-            Auto auto = new AutoDeportivo();
-            auto.pedirDatosAuto();
-            int km = opciones[(int)(Math.random() * 3)];
-            auto.avanzarKm(km);
-            autos.add(auto);
-            j++;
+         System.out.println("=== AUTOS VENDIDOS ===");
+        for (int m = 0; m < autosVendidos.size(); m++) {
+            System.out.println(autosStock.get(m));
         }
-        
-        for (int i = 0; i < CANT_AUTOS; i++) {
-            
-            System.out.println("\n------------------------");
-            System.out.println("Auto nro." + (i + 1));
-            System.out.println(autos.get(i));
-            
+         System.out.println("=== ADMINISTRATIVOS ===");
+        for (int n = 0; n < administrativos.size(); n++) {
+            administrativos.get(n).mostrarInformacion();
         }
+        System.out.println("=== VENDEDORES ===");
+        for (int l = 0; l < vendedores.size(); l++) {
+            vendedores.get(l).mostrarInformacion();
+        }
+        System.out.println("=== GERENTE ===");
+        gerente.mostrarInformacion();
+
     }
 }

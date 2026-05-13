@@ -11,6 +11,10 @@ public class AutoDeportivo extends Auto {
     public AutoDeportivo() {
     }
 
+    public AutoDeportivo(String marca, String modelo) {
+        super(marca, modelo);
+    }
+    
     public AutoDeportivo(double velocidadMaxima, double aceleracion0a100, String marca, String modelo, String color, double precio, Motor motor) {
         super(marca, modelo, color, precio, motor);
         this.velocidadMaxima = velocidadMaxima;
