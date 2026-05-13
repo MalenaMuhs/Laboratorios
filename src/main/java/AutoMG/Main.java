@@ -99,31 +99,7 @@ public class Main {
             }
         }
 
-        int[] kms = {10000, 20000, 50000};
-
-// AVANZAR AUTOS EN STOCK
-        int i = 0;
-
-        while (i < autosStock.size()) {
-
-            int kmRandom = kms[(int) (Math.random() * 3)];
-
-            autosStock.get(i).avanzarKm(kmRandom);
-
-            i++;
-        }
-
-// AVANZAR AUTOS VENDIDOS
-        int j = 0;
-
-        while (j < autosVendidos.size()) {
-
-            int kmRandom = kms[(int) (Math.random() * 3)];
-
-            autosVendidos.get(j).avanzarKm(kmRandom);
-
-            j++;
-        }
+  
         System.out.println("=== AUTOS EN STOCK ===");
         for (int k = 0; k < autosStock.size(); k++) {
             System.out.println(autosStock.get(k));

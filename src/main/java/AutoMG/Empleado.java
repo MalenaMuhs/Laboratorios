@@ -78,7 +78,7 @@ public class Empleado {
         System.out.println("Nombre: " + nombre + " " + apellido);
         System.out.println("DNI: " + dni);
         System.out.println("Email: " + email);
-        System.out.println("Código: " + codigoEmpleado);
+        System.out.println("Codigo: " + codigoEmpleado);
         System.out.println("Sueldo: $" + calcularSueldo());
     }
 }

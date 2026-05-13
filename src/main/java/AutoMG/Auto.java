@@ -64,10 +64,10 @@ public abstract class Auto {
         return  "\nMarca: " + marca
                 + "\nModelo: " + modelo
                 + "\nColor: " + color
-                + "\nPrecio: $" + precio
-                + "\nKilometros: " + motor.getKilometrosRecorridos()
+                + "\nPrecio: $" + precio;
+               /* + "\nKilometros: " + motor.getKilometrosRecorridos()
                 + "\nCilindrada: " + motor.getCilindradas()
-                + "\nCaballos: " + motor.getCaballosFuerza();
+                + "\nCaballos: " + motor.getCaballosFuerza();*/
     }
     
     //Getters and Setters

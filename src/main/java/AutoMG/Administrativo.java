@@ -36,7 +36,8 @@ public class Administrativo extends Empleado {
     public void cargarAuto(ArrayList<Auto> stock) {
 
         Scanner sc = new Scanner(System.in);
-
+        String marca;
+        String modelo;
         System.out.println("TIPO DE AUTO");
         System.out.println("1- Deportivo");
         System.out.println("2- Familiar");
@@ -46,16 +47,14 @@ public class Administrativo extends Empleado {
         int opcion = sc.nextInt();
         sc.nextLine();
 
-        /*System.out.print("Ingrese marca: ");
-        String marca = sc.nextLine();
-
-        System.out.print("Ingrese modelo: ");
-        String modelo = sc.nextLine();*/
-
         switch (opcion) {
 
             case 1:
+                System.out.print("Ingrese marca: ");
+                marca = sc.nextLine();
 
+                System.out.print("Ingrese modelo: ");
+                modelo = sc.nextLine();
                 stock.add(new AutoDeportivo(marca, modelo));
 
                 System.out.println("Auto deportivo agregado");
@@ -63,7 +62,11 @@ public class Administrativo extends Empleado {
                 break;
 
             case 2:
+                System.out.print("Ingrese marca: ");
+                marca = sc.nextLine();
 
+                System.out.print("Ingrese modelo: ");
+                modelo = sc.nextLine();
                 stock.add(new AutoFamiliar(marca, modelo));
 
                 System.out.println("Auto familiar agregado");
@@ -71,7 +74,11 @@ public class Administrativo extends Empleado {
                 break;
 
             case 3:
+                System.out.print("Ingrese marca: ");
+                marca = sc.nextLine();
 
+                System.out.print("Ingrese modelo: ");
+                modelo = sc.nextLine();
                 stock.add(new AutoUtilitario(marca, modelo));
 
                 System.out.println("Auto utilitario agregado");
@@ -88,7 +95,6 @@ public class Administrativo extends Empleado {
     public void mostrarInformacion() {
         super.mostrarInformacion();
         System.out.println("Horas Extras: " + horasExtra);
-        
+
     }
 }
-

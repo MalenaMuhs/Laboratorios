@@ -53,10 +53,10 @@ public class Gerente extends Empleado {
         System.out.print("Email: ");
         String email = leer.nextLine();
 
-        System.out.print("Código: ");
+        System.out.print("Codigo: ");
         String codigo = leer.nextLine();
 
-        System.out.print("Sueldo básico: ");
+        System.out.print("Sueldo basico: ");
         double sueldo = leer.nextDouble();
 
         if (opcion == 1) {
